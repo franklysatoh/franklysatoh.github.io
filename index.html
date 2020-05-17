@@ -1,1 +1,71 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="container mt-2">
+            <div class="row">
+                <div class="col-md-4 mb-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input v-bind:value="output.name" type="text" class="form-control" id="name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input v-bind:value="output.email" type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Phone</label>
+                                <input v-bind:value="output.phone" type="text" class="form-control" id="phone" placeholder="Phone">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-2" v-for="(customer, index) in customers">
+                    <div class="card">
+                        <div class="card-body">
+                            <label for="name">Name</label>
+                            <div class="input-group mb-3">
+                                <input type="text" v-bind:value="customer.name" readonly class="form-control-plaintext" placeholder="Name" aria-label="name" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button @click="coppyItem('name', customer.name)" class="btn btn-outline-success" v-bind:disabled="listEnabledCoppy.name" type="button" id="button-addon2">Copy</button>
+                                </div>
+                            </div>
+                            <label for="email">Email</label>
+                            <div class="input-group mb-3">
+                                <input type="text" v-bind:value="customer.email" readonly class="form-control-plaintext" placeholder="email" aria-label="email" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button @click="coppyItem('email', customer.email)" class="btn btn-outline-success" v-bind:disabled="listEnabledCoppy.email" type="button" id="button-addon2">Copy</button>
+                                </div>
+                            </div>
+                            <label for="phone">Phone</label>
+                            <div class="input-group mb-3">
+                                <input type="text" v-bind:value="customer.phone" readonly class="form-control-plaintext" placeholder="phone" aria-label="phone" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button @click="coppyItem('phone', customer.phone)" class="btn btn-outline-success" v-bind:disabled="listEnabledCoppy.phone" type="button" id="button-addon2">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
